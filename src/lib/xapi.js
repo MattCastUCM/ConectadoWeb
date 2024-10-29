@@ -1,9 +1,3 @@
-import xAPITrackerAssetOAuth2 from "../xAPITracker/Auth/OAuth2.js"
-import xAPITrackerAsset from "../xAPITracker/xAPITrackerAsset.js"
-import {AccessibleTracker, ACCESSIBLETYPE } from "../xAPITracker/HighLevel/Accessible.js"
-import { CompletableTracker , COMPLETABLETYPE } from "../xAPITracker/HighLevel/Completable.js";
-import {AlternativeTracker , ALTERNATIVETYPE } from "../xAPITracker/HighLevel/Alternative.js"
-import { GameObjectTracker , GAMEOBJECTTYPE } from "../xAPITracker/HighLevel/GameObject.js";
 const xAPIConfig = {
     "grant_type": "code",
     "auth_endpoint": "https://sso.simva-beta.e-ucm.es:443/realms/simva/protocol/openid-connect/auth",
@@ -11,7 +5,6 @@ const xAPIConfig = {
     "client_id": "simva-plugin",
     "code_challenge_method": "S256"
 }
-//var xapiTracker = new xAPITrackerAssetOAuth2("https://simva-api.simva-beta.e-ucm.es:443/activities/66eaa426a79dbf015d6f6206", xAPIConfig, "https://simva-beta.e-ucm.es/","testToken");
 const urlParams = new URLSearchParams(window.location.search);
 var simvaResultUri, authToken, username, homepage,debug;
 if(urlParams.size > 0) {
@@ -41,7 +34,12 @@ if(urlParams.size > 0) {
     debug = false;
 }
 export var xapiTracker = new xAPITrackerAsset(simvaResultUri, authToken, homepage, username, "ConectadoWeb", debug);
+//export var xapiTracker = new xAPITrackerAssetOAuth2(simvaResultUri, xAPIConfig, homepage, username, "ConectadoWeb");
 export var accessibleXapiTracker = new AccessibleTracker(xapiTracker);
 export var alternativeXapiTracker = new AlternativeTracker(xapiTracker);
 export var completableXapiTracker = new CompletableTracker(xapiTracker);
 export var gameObjectXapiTracker = new GameObjectTracker(xapiTracker);
+//completableXapiTracker.sendStatement(completableXapiTracker.Initialized("ConectadoWeb", COMPLETABLETYPE.GAME));
+//completableXapiTracker.sendStatement(completableXapiTracker.Progressed("ConectadoWeb", COMPLETABLETYPE.GAME, 0.5));
+//completableXapiTracker.sendStatement(completableXapiTracker.Completed("ConectadoWeb", COMPLETABLETYPE.GAME, true, false));
+//completableXapiTracker.sendStatement(completableXapiTracker.Completed("ConectadoWeb", COMPLETABLETYPE.GAME, true, true));

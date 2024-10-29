@@ -1,5 +1,4 @@
 import { gameObjectXapiTracker } from '../../../lib/xapi.js';
-import { GAMEOBJECTTYPE } from '../../../xAPITracker/HighLevel/GameObject.js';
 import NightmareMinigame from '../baseScenarios/nightmareMinigame.js'
 
 export default class NightmareDay1 extends NightmareMinigame {

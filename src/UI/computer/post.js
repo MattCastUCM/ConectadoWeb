@@ -2,7 +2,6 @@ import GameManager from '../../managers/gameManager.js';
 import ListViewButton from '../listView/listViewButton.js';
 import VerticalListView from '../listView/verticalListView.js';
 import MessageBox from '../messageBox.js'
-import { GAMEOBJECTTYPE } from "../../xAPITracker/HighLevel/GameObject.js";
 import { gameObjectXapiTracker } from "../../lib/xapi.js";
 export default class Post extends Phaser.GameObjects.Container {
     /**

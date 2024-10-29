@@ -1,8 +1,5 @@
 import NightmareMinigame from '../baseScenarios/nightmareMinigame.js';
-import { ACCESSIBLETYPE } from "../../../xAPITracker/HighLevel/Accessible.js"
-import { COMPLETABLETYPE } from "../../../xAPITracker/HighLevel/Completable.js";
-import { ALTERNATIVETYPE } from "../../../xAPITracker/HighLevel/Alternative.js"
-import { GAMEOBJECTTYPE } from "../../../xAPITracker/HighLevel/GameObject.js";
+
 import {xapiTracker, accessibleXapiTracker, alternativeXapiTracker, completableXapiTracker, gameObjectXapiTracker } from "../../../lib/xapi.js";
 
 export default class NightmareDay3 extends NightmareMinigame {

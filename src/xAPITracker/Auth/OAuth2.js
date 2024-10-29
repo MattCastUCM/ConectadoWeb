@@ -1,5 +1,5 @@
 import xAPITrackerAsset from "../xAPITrackerAsset.js";
-import OAuth2Protocol from "./OAuth2Protocol.js";
+import OAuth2Keycloak from "./OAuth2Keycloak.js";
 
 export default class xAPITrackerAssetOAuth2 extends xAPITrackerAsset {
     constructor(endpoint, config, homePage, token, defaultUri) {
@@ -11,7 +11,7 @@ export default class xAPITrackerAssetOAuth2 extends xAPITrackerAsset {
     }
 
     async getToken(config) {
-        var oauth2 = new OAuth2Protocol();
+        var oauth2 = new OAuth2Keycloak();
         await oauth2.init(config);
         return oauth2.token.access_token; // Return the access token
     }

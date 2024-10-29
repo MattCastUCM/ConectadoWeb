@@ -1,7 +1,6 @@
 import FriendsTab from './friendsTab.js'
 import FeedTab from './feedTab.js'
 import Post from './post.js';
-import { GAMEOBJECTTYPE } from "../../xAPITracker/HighLevel/GameObject.js";
 import { gameObjectXapiTracker } from "../../lib/xapi.js";
 
 export default class SocialNetworkScreen extends Phaser.GameObjects.Group {

@@ -1,9 +1,5 @@
 import Phone from '../UI/phone/phone.js';
 import GameManager from './gameManager.js';
-import { ACCESSIBLETYPE } from "../xAPITracker/HighLevel/Accessible.js"
-import { COMPLETABLETYPE } from "../xAPITracker/HighLevel/Completable.js";
-import { ALTERNATIVETYPE } from "../xAPITracker/HighLevel/Alternative.js"
-import { GAMEOBJECTTYPE } from "../xAPITracker/HighLevel/GameObject.js";
 import {xapiTracker, accessibleXapiTracker, alternativeXapiTracker, completableXapiTracker, gameObjectXapiTracker } from "../lib/xapi.js";
 
 export default class PhoneManager {

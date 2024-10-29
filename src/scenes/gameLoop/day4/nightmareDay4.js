@@ -1,5 +1,5 @@
 import { gameObjectXapiTracker } from '../../../lib/xapi.js';
-import { GAMEOBJECTTYPE } from '../../../xAPITracker/HighLevel/GameObject.js';
+
 import NightmareMinigame from '../baseScenarios/nightmareMinigame.js';
 import ReportablePhoto from '../../../gameObjects/reportablePhoto.js';
 

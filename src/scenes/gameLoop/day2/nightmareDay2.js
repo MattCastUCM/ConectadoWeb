@@ -1,5 +1,4 @@
 import { gameObjectXapiTracker } from '../../../lib/xapi.js';
-import { GAMEOBJECTTYPE } from '../../../xAPITracker/HighLevel/GameObject.js';
 import NightmareMinigame from '../baseScenarios/nightmareMinigame.js';
 import ChairWithGum from '../../../gameObjects/chairWithGum.js';
 

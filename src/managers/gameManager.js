@@ -1,9 +1,6 @@
 import EventDispatcher from "../eventDispatcher.js";
 import { alternativeXapiTracker, completableXapiTracker, gameObjectXapiTracker } from "../lib/xapi.js";
 import BaseScene from "../scenes/gameLoop/baseScene.js";
-import { ALTERNATIVETYPE } from "../xAPITracker/HighLevel/Alternative.js";
-import { COMPLETABLETYPE } from "../xAPITracker/HighLevel/Completable.js";
-import { GAMEOBJECTTYPE } from "../xAPITracker/HighLevel/GameObject.js";
 
 // Variable de nivel de modulo
 // - Se puede acceder desde cualquier parte del modulo, pero no es visible
