@@ -1,9 +1,10 @@
 const xAPIConfig = {
     "grant_type": "code",
-    "auth_endpoint": "https://sso.simva-beta.e-ucm.es:443/realms/simva/protocol/openid-connect/auth",
-    "token_endpoint": "https://sso.simva-beta.e-ucm.es:443/realms/simva/protocol/openid-connect/token",
+    "auth_endpoint": "https://sso.simva-beta2.e-ucm.es:443/realms/simva/protocol/openid-connect/auth",
+    "token_endpoint": "https://sso.simva-beta2.e-ucm.es:443/realms/simva/protocol/openid-connect/token",
     "client_id": "simva-plugin",
-    "code_challenge_method": "S256"
+    "code_challenge_method": "S256",
+    "redirect_uri":"https://simva-beta2.e-ucm.es/"
 }
 const urlParams = new URLSearchParams(window.location.search);
 var simvaResultUri, authToken, username, homepage,debug;
