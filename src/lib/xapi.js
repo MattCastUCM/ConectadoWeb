@@ -34,8 +34,8 @@ if(urlParams.size > 0) {
     homepage = null;
     debug = false;
 }
-export var xapiTracker = new xAPITrackerAsset(simvaResultUri, authToken, homepage, username, "ConectadoWeb", debug);
-//export var xapiTracker = new xAPITrackerAssetOAuth2(simvaResultUri, xAPIConfig, homepage, username, "ConectadoWeb");
+export var xapiTracker = new xAPITrackerAsset(simvaResultUri, null, authToken, homepage, username, "ConectadoWeb", debug);
+//export var xapiTracker = new xAPITrackerAssetOAuth2(simvaResultUri, null, xAPIConfig, homepage, username, "ConectadoWeb");
 export var accessibleXapiTracker = new AccessibleTracker(xapiTracker);
 export var alternativeXapiTracker = new AlternativeTracker(xapiTracker);
 export var completableXapiTracker = new CompletableTracker(xapiTracker);
