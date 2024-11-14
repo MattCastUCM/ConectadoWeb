@@ -287,7 +287,6 @@ export default class GameManager {
     }
 
     startGame(userInfo) {
-        this.startedTime=new Date();
         this.InitializedGame();
         this.blackboard.clear();
         this.setUserInfo(userInfo);
@@ -503,6 +502,8 @@ export default class GameManager {
     }
 
     InitializedGame() {
+        this.startedTime=new Date();
+        this.Initialized=true;
         completableXapiTracker.sendStatement(completableXapiTracker.Initialized("ConnectadoWeb",COMPLETABLETYPE.GAME))
     }
 
@@ -517,6 +518,7 @@ export default class GameManager {
     }
 
     CompletedGame(completion) {
+        this.Initialized=false;
         var statement = this.Completed("ConnectadoWeb",COMPLETABLETYPE.GAME, completion);
         completableXapiTracker.sendStatement(statement);
     }

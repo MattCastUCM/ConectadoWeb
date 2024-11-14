@@ -107,7 +107,7 @@ export default class NightmareDay5 extends NightmareBase {
                         textConfig: textConfig,
 
                         onComplete: () => {
-                            this.gameManager.CompletedGame(true);
+                            this.gameManager.ProgressedGame();
                             this.gameManager.startCreditsScene(true);
                         },
                         onCompleteDelay: 250
