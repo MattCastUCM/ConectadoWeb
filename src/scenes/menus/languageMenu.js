@@ -1,4 +1,5 @@
 import GameManager from "../../managers/gameManager.js"
+import Button from '../../UI/button.js'
 import {xapiTracker, accessibleXapiTracker, alternativeXapiTracker, completableXapiTracker, gameObjectXapiTracker } from "../../lib/xapi.js";
 
 export default class LanguageMenu extends Phaser.Scene {
@@ -16,6 +17,7 @@ export default class LanguageMenu extends Phaser.Scene {
 
         this.gameManager = GameManager.getInstance();
         this.i18next = this.gameManager.i18next;
+        let namespace = 'menus\\languageMenu';
 
         // Fondo escalado en cuanto al canvas
         let bg = this.add.image(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2, 'basePC');
@@ -41,6 +43,26 @@ export default class LanguageMenu extends Phaser.Scene {
             height, 'Spain', 'es', tweenTime, increase);
         this.createFlagButton(2.8 * CANVAS_WIDTH / 4, 2.4 * CANVAS_HEIGHT / 4,
             height, 'UK', 'en', tweenTime, increase);
+        
+        // Boton de salir
+        let exitTranslation = "Exit";
+        let exitButton = new Button(this, 100, 3 * CANVAS_HEIGHT / 4 + 10, 0.5,
+            () => {
+                if(!this.gameManager.initialized) {
+                    this.gameManager.InitializedGame();
+                }
+                this.gameManager.CompletedGame(true);
+            },
+            'powerOff', { R: 64, G: 142, B: 134 }, { R: 0, G: 104, B: 93 }, { R: 200, G: 200, B: 200 }
+        );
+
+        // Texto que esta al lado del boton de salir
+        let exitTextStyle = { ...this.gameManager.textConfig };
+        exitTextStyle.fontFamily = 'kimberley';
+        exitTextStyle.fontSize = '40px';
+        exitTextStyle.color = '#004E46';
+ 
+        this.add.text(exitButton.x + 60, exitButton.y, exitTranslation, exitTextStyle).setOrigin(0, 0.5);
     }
 
     /**
