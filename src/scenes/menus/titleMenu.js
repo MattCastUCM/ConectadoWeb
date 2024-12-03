@@ -66,10 +66,6 @@ export default class TitleMenu extends Phaser.Scene {
         let exitTranslation = i18next.t("exitText", { ns: namespace });
         let exitButton = new Button(this, 100, 3 * CANVAS_HEIGHT / 4 + 10, 0.5,
             () => {
-                //if(!gameManager.initialized) {
-                //    gameManager.InitializedGame();
-                //}
-                //gameManager.CompletedGame(true);
                 gameManager.startLangMenu();
             },
             'powerOff', { R: 64, G: 142, B: 134 }, { R: 0, G: 104, B: 93 }, { R: 200, G: 200, B: 200 }

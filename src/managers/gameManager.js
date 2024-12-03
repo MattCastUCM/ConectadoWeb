@@ -1,5 +1,5 @@
 import EventDispatcher from "../eventDispatcher.js";
-import { alternativeXapiTracker, completableXapiTracker, gameObjectXapiTracker } from "../lib/xapi.js";
+import { alternativeXapiTracker, completableXapiTracker, gameObjectXapiTracker, xapiTracker } from "../lib/xapi.js";
 import BaseScene from "../scenes/gameLoop/baseScene.js";
 
 // Variable de nivel de modulo
@@ -521,5 +521,6 @@ export default class GameManager {
         this.Initialized=false;
         var statement = this.Completed("ConnectadoWeb",COMPLETABLETYPE.GAME, completion);
         completableXapiTracker.sendStatement(statement);
+        xapiTracker.sendBackup();
     }
 }
