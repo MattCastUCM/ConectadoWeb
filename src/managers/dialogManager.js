@@ -37,13 +37,11 @@ export default class DialogManager {
         this.bgBlock = scene.add.rectangle(0, 0, this.scene.CANVAS_WIDTH, this.scene.CANVAS_HEIGHT, 0xfff, 0).setOrigin(0, 0);
         this.bgBlock.setDepth(this.textbox.box.depth - 1);
         this.bgBlock.on('pointerdown', () => {
-            if (this.textbox.box.input.enabled && this.textbox.box.alpha > 0) {
+            if (this.textbox.box.input.enabled && this.textbox.box.alpha > 0.9) {
                 this.nextDialog();
             }
-
-            if (!this.currNode) {
-                this.textbox.activate(false);
-                this.bgBlock.disableInteractive();
+            else if (this.textbox.box.input.enabled && this.currNode.type === "text") {
+                this.setNode(null, this.portraits);
             }
         });
 
@@ -126,10 +124,7 @@ export default class DialogManager {
     */
     setNode(node) {
         // Si no hay ningun dialogo activo y el nodo a poner es valido
-        if (!this.isTalking() && node) {
-            // Indica que ha empezado un dialogo
-            this.setTalking(true);
-
+        if (!this.isTalking() && node != null) {
             // Desactiva la caja de texto y las opciones (por si acaso)
             if (this.textbox) {
                 this.textbox.activate(false);
@@ -139,12 +134,15 @@ export default class DialogManager {
 
             // Cambia el nodo por el indicado
             this.currNode = node;
+            this.lastCharacter = null;
             this.processNode(node);
         }
         else {
+            // Se resetea la configuracion del texto de la caja por si se habia cambiado a la de por defecto
+            this.currNode = null;
+            this.textbox.resetTextConfig();
             this.textbox.activate(false);
             this.bgBlock.disableInteractive();
-            this.setTalking(false);
         }
     }
 

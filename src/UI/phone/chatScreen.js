@@ -33,7 +33,7 @@ export default class ChatScreen extends BaseScreen {
 
         // Configuracion de texto para la el texto del titulo
         let textConfig = { ...scene.gameManager.textConfig };
-        textConfig.fontFamily = 'roboto';
+        textConfig.fontFamily = 'roboto-regular';
         textConfig.color = '#000';
         textConfig.fontStyle = 'bold';
 
@@ -218,7 +218,16 @@ export default class ChatScreen extends BaseScreen {
         this.add(this.returnButton);
     }
 
+    setInteractive() {
+        this.textBox.setInteractive();
+        this.canAnswer = true;
+    }
 
+    disableInteractive() {
+        this.textBox.disableInteractive();
+        this.canAnswer = false;
+    }
+    
     // Borra todas las notificaciones de este chat
     // (genera -notificationAmount para quitarlas todas)
     clearNotifications() {
@@ -251,13 +260,10 @@ export default class ChatScreen extends BaseScreen {
      */
     setNode(node) {
         this.canAnswer = true;
-        this.scene.dialogManager.setTalking(false);
-        this.scene.dialogManager.bgBlock.disableInteractive();
 
         // Si el nodo a poner es valido, cambia el nodo por el indicado
         if (node) {
             this.currNode = node;
-
             if (this.currNode.type === "chatMessage") {
                 this.processNode();
             }
@@ -266,11 +272,9 @@ export default class ChatScreen extends BaseScreen {
 
     // Procesa el nodo de dialogo
     processNode() {
-        this.canAnswer = true;
-        this.scene.dialogManager.setTalking(false);
-        this.scene.dialogManager.bgBlock.disableInteractive();
-        
         if (this.currNode) {
+            this.disableInteractive();
+
             // Si el nodo es de tipo mensaje, con el retardo indicado, anade
             //  el mensaje al chat, pasa al siguiente nodo, y lo procesa.
             if (this.currNode.type === "chatMessage") {
@@ -285,6 +289,7 @@ export default class ChatScreen extends BaseScreen {
             // Si el nodo es de tipo condicion, hace que el dialogManager lo procese y obtiene el siguiente nodo
             else if (this.currNode.type === "condition") {
                 let i = this.scene.dialogManager.processCondition(this.currNode);
+                this.scene.dialogManager.currNode = this.currNode;
 
                 // El indice del siguiente nodo sera el primero que cumpla una de las condiciones
                 this.currNode = this.currNode.next[i];
@@ -301,10 +306,12 @@ export default class ChatScreen extends BaseScreen {
                 this.currNode = this.currNode.next[0];
                 this.processNode();
             }
-            // Si no, si es de cualquier otro tipo excepto de eleccion multiple, lo gestiona el dialogManager
-            else if (this.currNode.type !== "choice") {
-                this.scene.dialogManager.setNode(this.currNode);
+            else {
+                this.setInteractive();
             }
+        }
+        else {
+            this.setInteractive();
         }
     }
 
